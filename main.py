@@ -26,7 +26,7 @@ class Face_and_Object_Recognition:
     known_face_names = []
     process_current_frame = True
 
-    def __init__(self):
+    def _init_(self):
         self.encode_faces()
         
         #enode faces
@@ -49,11 +49,11 @@ class Face_and_Object_Recognition:
         while True:
             ret, frame = video_capture.read()
 
-            model = YOLO("yolov8s.pt")
+            # model = YOLO("yolov8s.pt")
 
-            results = model.predict(source =0, show = True)
+            # results = model.predict(source =0, show = True)
 
-            print(*results)
+            # print(*results)
 
             # Only process every other frame of video to save time
             if self.process_current_frame:
@@ -92,9 +92,9 @@ class Face_and_Object_Recognition:
                 bottom *= 4
                 left *= 4
 
-                cv2.rectangle(frame, (left, top), (right, bottom), (255, 255, 255), 2)
-                cv2.rectangle(frame, (left, bottom - 135), (right, bottom), (255, 255, 255), cv2.FILLED)
-                cv2.putText(frame, name, (left + 6, bottom - 6), cv2.FONT_HERSHEY_DUPLEX, 0.8, (255, 255, 255), 1)
+                cv2.rectangle(frame, (left, top), (right, bottom), (0, 0, 255), 2)
+                cv2.rectangle(frame, (left, bottom - 35), (right, bottom), (0, 0, 255), cv2.FILLED)
+                cv2.putText(frame, name, (left + 6, bottom - 6), cv2.FONT_HERSHEY_DUPLEX, 0.8, (255, 0, 0), 1)
 
             cv2.imshow('Face Recognition', frame)
 
@@ -105,6 +105,6 @@ class Face_and_Object_Recognition:
         cv2.destroyAllWindows()
 
 
-if __name__ == '__main__':
-    fr = Face_and_Object_Recognition()
-    fr.recognition()
+
+fr = Face_and_Object_Recognition()
+fr.recognition()
